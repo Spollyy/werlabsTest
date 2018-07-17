@@ -1,0 +1,601 @@
+// Colours //
+$peach: #FF7865;
+$pineGreen: #0F5441;
+$oceanBlue: #204C63;
+$burgundy: #6D475A;
+$yellow: #FFD779;
+$black: #3d3d3c;
+$grey: #7a7a7a;
+
+// Fonts //
+@font-face {
+  font-family: "Proxima N W01";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/proxima-nova-regular.woff2") format("woff2"),
+  url("fonts/proxima-nova-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Proxima N W01";
+  font-style: normal;
+  font-weight: 700;
+  src: url("fonts/proxima-nova-bold.woff2") format("woff2"),
+  url("fonts/proxima-nova-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Proxima N W01";
+  font-style: normal;
+  font-weight: 800;
+  src: url("fonts/proxima-nova-extrabold.woff2") format("woff2"),
+  url("fonts/proxima-nova-extrabold.woff") format("woff");
+}
+
+// Assignment Styles //
+
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 375px;
+$breakpoint-oldMobile: 320px;
+$breakpoint-desktop: 1140px;
+
+body, h1, h3, p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 1;
+  &.bordered {
+    border-bottom: 1px solid lighten($grey, 30%);
+  }
+  @media(max-width: $breakpoint-mobile) {
+    border-bottom: 1px solid lighten($grey, 30%);
+  }
+}
+
+main {
+  padding-top: 73px;
+  @media(max-width: $breakpoint-tablet) {
+    padding-top: 59px;
+  }
+}
+
+.header {
+  padding: 22px 0;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 15px 0;
+  }
+  &__nav, &__logo {
+    display: inline-block;
+  }
+  &__nav {
+    float: right;
+  }
+  &__menu {
+    @media (max-width: $breakpoint-tablet) {
+      display: none;
+    }
+    &__item {
+      display: inline-block;
+      font: 400 16px/26px "Proxima N W01", sans-serif;
+      margin-right: 17px;
+      position: relative;
+      &:hover {
+        &:after {
+          width: 100%;
+          -webkit-transition: width 0.2s ease-in;
+          -moz-transition: width 0.2s ease-in;
+          -ms-transition: width 0.2s ease-in;
+          -o-transition: width 0.2s ease-in;
+          transition: width 0.2s ease-in;
+        }
+      }
+      &:after {
+        content: ' ';
+        height: 2px;
+        width: 0;
+        background: $peach;
+        display: block;
+        position: absolute;
+        -webkit-transition: width 0.2s ease-in;
+        -moz-transition: width 0.2s ease-in;
+        -ms-transition: width 0.2s ease-in;
+        -o-transition: width 0.2s ease-in;
+        transition: width 0.2s ease-in;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        color: $grey;
+        &:visited {
+          color: $grey;
+        }
+        &:hover {
+          color: $peach;
+        }
+      }
+    }
+  }
+  &__burger {
+    display: none;
+    float: right;
+    height: 20px;
+    width: 20px;
+    margin-top: 2px;
+    &:before, &:after {
+      content: ' ';
+      position: relative;
+      display: block;
+      height: 2px;
+      width: 20px;
+      background: $grey;
+      top: 4px;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+    &:after {
+      top: 5px;
+    }
+    span {
+      margin-top: 9px;
+      display: block;
+      height: 2px;
+      width: 20px;
+      background: $grey;
+      -webkit-transition: opacity 0.5s;
+      -moz-transition: opacity 0.5s;
+      -ms-transition: opacity 0.5s;
+      -o-transition: opacity 0.5s;
+      transition: opacity 0.5s;
+    }
+    &.active {
+      &:after {
+        top: -2px;
+        transform: rotate(-45deg);
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      &:before {
+        top: 11px;
+        transform: rotate(45deg);
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+      span {
+        opacity: 0;
+        -webkit-transition: opacity 0.5s;
+        -moz-transition: opacity 0.5s;
+        -ms-transition: opacity 0.5s;
+        -o-transition: opacity 0.5s;
+        transition: opacity 0.5s;
+      }
+
+    }
+    @media (max-width: $breakpoint-tablet) {
+      display: block;
+    }
+  }
+}
+
+.top {
+  height: 465px;
+  background: #fff url(../images/lp-start-hero-comp.jpg) center right no-repeat;
+  background-size: contain;
+  &__caption {
+    max-width: 550px;
+    font: 400 23px "Proxima N W01", sans-serif;
+    color: #7a7a7a;
+    padding: 120px 0 0;
+    &__heading {
+      font-size: 68px;
+      font-weight: 900;
+      line-height: 1;
+      color: $peach;
+      padding-bottom: 25px;
+      span {
+        color: $pineGreen;
+      }
+    }
+  }
+  @media (max-width: $breakpoint-desktop) {
+    background-position-x: 300%;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    background-size: cover;
+    background-position-x: -85%;
+    &__caption {
+      max-width: 265px;
+      padding: 35px 0 0;
+    }
+  }
+  @media (max-width: $breakpoint-mobile) {
+    background: url(../images/lp-start-hero-small-comp.jpg) bottom center no-repeat;
+    background-size: contain;
+    height: 608px;
+    &__caption {
+      max-width: 320px;
+      padding: 24px 0 0;
+      font-size: 18px;
+      &__heading {
+        font-size: 42px;
+      }
+    }
+  }
+}
+
+.cards {
+  background: #fff url(../images/footer-bg.svg) center bottom no-repeat;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    padding: 72px 0 0;
+  }
+  &__item {
+    position: relative;
+    width: 355px;
+    background: #fff;
+
+    &__stripe {
+      position: absolute;
+      background: #FFD779;
+      top: -26px;
+      padding: 0 15px;
+      text-align: center;
+      border-radius: 4px 4px 0 0;
+      font: 700 13px/26px "Proxima N W01", sans-serif;
+      text-transform: uppercase;
+    }
+    &__header {
+      font: 700 32px "Proxima N W01", sans-serif;
+      width: 100%;
+      background: $burgundy;
+      color: #fff;
+      box-sizing: border-box;
+      padding: 20px 25px 17px;
+      &_blue {
+        background: $oceanBlue;
+      }
+      &_green {
+        background: $pineGreen;
+      }
+
+      h3, a {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 30px;
+        color: #fff;
+      }
+    }
+    &__link {
+      display: block;
+      text-align: center;
+      font: 600 14px/28px "Proxima N W01", sans-serif;
+      text-transform: uppercase;
+      padding: 20px 0 0;
+      color: $burgundy;
+      &_green {
+        color: $pineGreen;
+      }
+      &_blue {
+        color: $oceanBlue;
+      }
+    }
+  }
+  &__contentBox {
+    padding: 20px 25px;
+  }
+  &__list {
+    &__item {
+      margin: 0;
+      padding: 15px 0 0 36px;
+      font: 400 16px/26px "Proxima N W01", sans-serif;
+      &:before {
+        font: 400 15px 'Werlabs';
+        content: '\f029';
+        margin-left: -36px;
+        margin-top: 5px;
+        position: absolute;
+        display: block;
+      }
+      a {
+        color: $peach;
+      }
+    }
+  }
+  &__link {
+    padding: 71px 0 80px;
+    display: block;
+    text-align: center;
+    font: 400 16px/1 "Proxima N W01", sans-serif;
+    a {
+      color: $peach;
+      padding-bottom: 6px;
+      border-bottom: 1px solid $peach;
+    }
+  }
+  @media (max-width: $breakpoint-tablet) {
+    &__content {
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    &__item {
+      width: 345px;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    background-size: cover;
+    &__content {
+      padding-top: 63px;
+      display: block;
+    }
+    &__item {
+      width: 340px;
+      margin: 0 auto 24px;
+      &:last-of-type {
+        display: none;
+      }
+    }
+    &__link {
+      padding: 9px 0 43px;
+    }
+  }
+
+  @media (max-width: $breakpoint-oldMobile) {
+    &__item {
+      width: 280px;
+    }
+  }
+}
+
+.why {
+  padding-top: 95px;
+
+  &__item {
+    p, h3 {
+      text-align: center;
+    }
+    h3 {
+      font: 800 35px/1 "Proxima N W01", sans-serif;
+      color: $pineGreen;
+      padding-top: 22px;
+    }
+    p {
+      font: 400 17px "Proxima N W01", sans-serif;
+      padding-top: 5px;
+    }
+    &__image {
+      height: 80px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+  }
+  @media (max-width: $breakpoint-mobile) {
+    padding-top: 60px;
+  }
+}
+
+.socialMedia {
+  font-size: 0;
+  position: relative;
+  top: 35px;
+  width: 182px;
+  margin-left: 22px;
+  @media (max-width: $breakpoint-tablet) {
+    top: 550px;
+  }
+  @media (max-width: $breakpoint-mobile) {
+    top: 1035px;
+  }
+  &__item {
+    display: inline-block;
+    width: 33%;
+    a {
+      width: 33px;
+      display: block;
+      margin: 0 auto;
+    }
+    circle {
+      fill: #dbdad7;
+    }
+    &:hover {
+      cursor: pointer;
+      circle {
+        fill: $peach;
+        -webkit-transition: fill 0.5s;
+        -moz-transition: fill 0.5s;
+        -ms-transition: fill 0.5s;
+        -o-transition: fill 0.5s;
+        transition: fill 0.5s;
+      }
+    }
+  }
+}
+
+.button {
+  display: block;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  border: 2px solid $burgundy;
+  border-radius: 25px;
+  background: #fff;
+  text-transform: uppercase;
+  padding: 0;
+  color: $burgundy;
+  margin-top: 24px;
+  font: 800 14px/45px "Proxima N W01", sans-serif;
+  letter-spacing: 1px;
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background: $burgundy;
+    -webkit-transition: background 0.5s, color 0.5s;
+    -moz-transition: background 0.5s, color 0.5s;
+    -ms-transition: background 0.5s, color 0.5s;
+    -o-transition: background 0.5s, color 0.5s;
+    transition: background 0.5s, color 0.5s;
+  }
+  &_blue {
+    border-color: $oceanBlue;
+    color: $oceanBlue;
+    &:hover {
+      background: $oceanBlue;
+    }
+  }
+  &_green {
+    border-color: $pineGreen;
+    color: $pineGreen;
+    margin-top: 50px;
+    &:hover {
+      background: $pineGreen;
+    }
+  }
+  &_small {
+    width: 220px;
+    border-radius: 25px;
+    border: 2px solid $peach;
+    color: $peach;
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: inherit;
+    &:hover {
+      background: $peach;
+    }
+  }
+}
+
+.footer {
+  font-size: 0;
+  padding: 125px 0 48px;
+  background: #fff url(../images/footer-bg.svg) center bottom no-repeat;
+  &__list {
+    &__item {
+      font: 400 14px/40px "Proxima N W01", sans-serif;
+      a {
+        color: $black;
+        &:hover {
+          color: $peach;
+        }
+      }
+    }
+  }
+
+  &__contact {
+    width: 290px;
+    @media (max-width: $breakpoint-tablet) {
+      * {
+        margin: 0 auto;
+      }
+    }
+  }
+  &__logo {
+    width: 192px;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 103px;
+    font: 400 12px "Proxima N W01", sans-serif;
+    p {
+      padding-top: 14px;
+    }
+  }
+  &__links {
+    width: calc(100% - 482px);
+    padding-top: 13px;
+  }
+  &__contact, &__logo, &__links {
+    display: inline-block;
+    vertical-align: top;
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+    }
+  }
+  &__klarna {
+    font: 400 14px "Proxima N W01", sans-serif;
+    text-align: center;
+    width: 90px;
+    margin: 0 auto;
+    padding: 179px 0 0;
+    color: $grey;
+    p {
+      padding-bottom: 12px;
+    }
+  }
+  @media (max-width: $breakpoint-mobile) {
+    padding: 202px 0 48px;
+    &__list {
+      text-align: center;
+      &__item {
+        font-size: 16px;
+      }
+    }
+    &__logo {
+      padding-top: 47px;
+    }
+  }
+}
+
+.column {
+  box-sizing: border-box;
+  width: 32.1%;
+  display: inline-block;
+  vertical-align: top;
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+    padding-top: 25px;
+    &:first-of-type {
+      padding-top: 0;
+    }
+  }
+}
+
+.slick-dots {
+  bottom: -60px;
+  li {
+    margin: 0 9px;
+    button {
+      &:before {
+        width: 18px;
+        height: 18px;
+        font-size: 8px;
+        color: $peach;
+      }
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    &.slick-active button:before {
+      color: $peach;
+      border: 1px solid $peach;
+      border-radius: 100%;
+    }
+  }
+}
